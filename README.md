@@ -2,7 +2,7 @@
 
 A powerful, intelligent web scraper designed to extract blog content and technical knowledge from any website. Built to handle diverse site structures with zero manual configuration.
 
-![image](images/Screenshot 2025-09-17 at 2.04.07 AM.png)
+![image](images/ss1.png)
 
 ## 🚀 Features
 
