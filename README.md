@@ -29,6 +29,26 @@ uv pip install -r requirements.txt
 
 ## 🔧 Usage
 
+### Web Interface (Recommended)
+
+The easiest way to use OGscraper is through the modern web interface:
+
+```bash
+# Start the web server
+python app.py
+# or
+uv run python app.py
+
+# Open your browser to http://localhost:8080
+```
+
+**Features:**
+- ✨ Modern, intuitive interface
+- 📱 Responsive design for mobile/desktop
+- 🎨 Syntax-highlighted JSON output
+- 📋 One-click copy/download results
+- ⚙️ Easy configuration options
+
 ### Command Line Interface
 
 ```bash
@@ -66,6 +86,17 @@ for item in result.items:
     print(f"Title: {item.title}")
     print(f"Content: {item.content[:200]}...")
     print(f"URL: {item.source_url}")
+```
+
+### REST API
+
+The web interface also exposes a REST API endpoint:
+
+```bash
+# POST /api/scrape
+curl -X POST http://localhost:8080/api/scrape \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://example.com", "max_items": 10, "use_browser": false}'
 ```
 
 ## 🎯 Output Format

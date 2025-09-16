@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGscraper - Web Content Extractor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>🔍 OGscraper</h1>
+                <p>Extract content from any website</p>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="input-section">
+                <form id="scrape-form" class="scrape-form">
+                    <div class="form-group">
+                        <label for="url">Website URL</label>
+                        <input 
+                            type="url" 
+                            id="url" 
+                            name="url" 
+                            placeholder="https://example.com" 
+                            required
+                            class="url-input"
+                        >
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="option-group">
+                            <label for="max_items">Max Items</label>
+                            <select id="max_items" name="max_items">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="use_browser" name="use_browser">
+                                <span class="checkmark"></span>
+                                Use Browser Mode
+                            </label>
+                            <small>For JavaScript-heavy sites</small>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="scrape-btn" id="scrape-btn">
+                        <span class="btn-text">Extract Content</span>
+                        <div class="loading-spinner"></div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="output-section">
+                <div class="output-header">
+                    <h3>Extracted Content</h3>
+                    <div class="output-actions">
+                        <button id="copy-btn" class="action-btn" title="Copy JSON">
+                            📋 Copy
+                        </button>
+                        <button id="download-btn" class="action-btn" title="Download JSON">
+                            💾 Download
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="output-container">
+                    <div id="placeholder" class="placeholder">
+                        <div class="placeholder-icon">🔍</div>
+                        <p>Enter a URL above to extract content</p>
+                    </div>
+                    
+                    <pre id="output" class="output hidden"><code class="language-json"></code></pre>
+                </div>
+                
+                <div id="error-message" class="error-message hidden"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
