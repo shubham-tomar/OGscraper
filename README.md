@@ -2,6 +2,8 @@
 
 A powerful, intelligent web scraper designed to extract blog content and technical knowledge from any website. Built to handle diverse site structures with zero manual configuration.
 
+![image](images/Screenshot 2025-09-17 at 2.04.07 AM.png)
+
 ## 🚀 Features
 
 - **Universal Site Support**: Works with any blog or content site without custom configuration
@@ -141,7 +143,7 @@ OGscraper uses a multi-strategy approach to discover and extract content:
 
 OGscraper has been tested and works well with:
 
-- **Tech Blogs**: quill.co, interviewing.io
+- **Tech Blogs**: quill.co, interviewing.io, https://warpstream.com/, https://clickhouse.com/
 - **Business Sites**: thebluedot.co, franchiseki.com
 - **Personal Blogs**: Various Substack and custom blog platforms
 - **Documentation Sites**: Sites with `/docs` or `/guides` sections
