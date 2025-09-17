@@ -11,7 +11,6 @@ import time
 import aiohttp
 import trafilatura
 from bs4 import BeautifulSoup
-from readability.readability import Document
 
 from .models import ScrapedItem
 from .renderer import PlaywrightRenderer
@@ -23,7 +22,7 @@ logger = logging.getLogger(__name__)
 class AsyncMultiExtractor:
     """High-performance async content extractor with parallel processing"""
 
-    def __init__(self, use_browser: bool = False, max_concurrent: int = 10, timeout: int = 15):
+    def __init__(self, use_browser: bool = False, max_concurrent: int = 15, timeout: int = 12):
         self.use_browser = use_browser
         self.max_concurrent = max_concurrent
         self.timeout = timeout
@@ -32,9 +31,15 @@ class AsyncMultiExtractor:
 
     async def __aenter__(self):
         """Async context manager entry"""
-        # Create aiohttp session
-        connector = aiohttp.TCPConnector(limit=self.max_concurrent, limit_per_host=5)
-        timeout = aiohttp.ClientTimeout(total=self.timeout)
+        # Create aiohttp session with optimized settings
+        connector = aiohttp.TCPConnector(
+            limit=self.max_concurrent * 2,
+            limit_per_host=8,
+            ttl_dns_cache=300,
+            use_dns_cache=True,
+            keepalive_timeout=30
+        )
+        timeout = aiohttp.ClientTimeout(total=self.timeout, connect=5)
         self.session = aiohttp.ClientSession(
             connector=connector,
             timeout=timeout,
@@ -115,9 +120,22 @@ class AsyncMultiExtractor:
         # Strategy 1: Try HTTP request first (fastest)
         try:
             async with self.session.get(url) as response:
+                # Check for redirects to error pages
+                if response.status == 404:
+                    logger.debug(f"404 Not Found: {url}")
+                    return None
+                elif response.status >= 400:
+                    logger.debug(f"HTTP error {response.status}: {url}")
+                    return None
+
                 if response.status == 200:
                     content = await response.read()
                     content_size = len(content)
+
+                    # Early detection of error pages by checking URL and title
+                    if await self._is_error_page(content, response.url):
+                        logger.debug(f"Detected error page: {url}")
+                        return None
 
                     # Only flag as invalid if content is genuinely minimal (like SPAs)
                     if content_size < 1000:
@@ -128,7 +146,11 @@ class AsyncMultiExtractor:
                         # Try extraction with the fetched content
                         item = await self._extract_with_methods(url, content)
                         if item and len(item.content.strip()) > 200:
-                            return item
+                            # Additional validation for extracted content
+                            if not self._is_likely_error_content(item.content, item.title):
+                                return item
+                            else:
+                                logger.debug(f"Extracted content appears to be error page: {url}")
 
         except Exception as exc:
             logger.debug(f"HTTP request failed for {url}: {exc}")
@@ -139,39 +161,41 @@ class AsyncMultiExtractor:
                 render_result = await self.browser_renderer.render_page(url)
                 if render_result.get('html') and not render_result.get('error'):
                     html_content = render_result['html'].encode()
+
+                    # Check if browser-rendered content is also an error page
+                    if await self._is_error_page(html_content, render_result.get('final_url', url)):
+                        logger.debug(f"Browser-rendered content is error page: {url}")
+                        return None
+
                     item = await self._extract_with_methods(url, html_content)
                     if item and len(item.content.strip()) > 200:
-                        return item
+                        if not self._is_likely_error_content(item.content, item.title):
+                            return item
+                        else:
+                            logger.debug(f"Browser-extracted content appears to be error page: {url}")
             except Exception as exc:
                 logger.debug(f"Browser rendering failed for {url}: {exc}")
 
         return None
 
     async def _extract_with_methods(self, url: str, content: bytes) -> Optional[ScrapedItem]:
-        """Try different extraction methods with thread pool for CPU-bound operations"""
-        loop = asyncio.get_event_loop()
+        """Try extraction methods in order of preference for speed"""
+        # Try trafilatura first (fastest and most accurate)
+        # Note: trafilatura doesn't work well in ThreadPoolExecutor due to signal handling
+        try:
+            result = self._extract_with_trafilatura(url, content)
+            if result and len(result.content.strip()) > 200:
+                return result
+        except Exception as exc:
+            logger.debug(f"Trafilatura extraction failed: {exc}")
 
-        with ThreadPoolExecutor(max_workers=3) as executor:
-            # Run extraction methods in parallel in thread pool
-            tasks = [
-                loop.run_in_executor(executor, self._extract_with_trafilatura, url, content),
-                loop.run_in_executor(executor, self._extract_with_beautifulsoup, url, content),
-                loop.run_in_executor(executor, self._extract_with_readability, url, content)
-            ]
-
-            # Wait for the first successful result
-            for task in asyncio.as_completed(tasks):
-                try:
-                    result = await task
-                    if result and len(result.content.strip()) > 200:
-                        # Cancel remaining tasks
-                        for t in tasks:
-                            if not t.done():
-                                t.cancel()
-                        return result
-                except Exception as exc:
-                    logger.debug(f"Extraction method failed: {exc}")
-                    continue
+        # Fallback to BeautifulSoup if trafilatura fails
+        try:
+            result = self._extract_with_beautifulsoup(url, content)
+            if result and len(result.content.strip()) > 200:
+                return result
+        except Exception as exc:
+            logger.debug(f"BeautifulSoup extraction failed: {exc}")
 
         return None
 
@@ -242,34 +266,6 @@ class AsyncMultiExtractor:
             logger.debug(f"BeautifulSoup extraction failed for {url}: {exc}")
             return None
 
-    def _extract_with_readability(self, url: str, content: bytes) -> Optional[ScrapedItem]:
-        """Extract using readability (CPU-bound, runs in thread pool)"""
-        try:
-            content_str = content.decode('utf-8', errors='ignore')
-            doc = Document(content_str)
-            readable_html = doc.summary()
-            title = doc.title()
-
-            if not readable_html:
-                return None
-
-            # Convert to text
-            soup = BeautifulSoup(readable_html, 'html.parser')
-            text_content = self._html_to_markdown(soup)
-
-            if len(text_content.strip()) < 100:
-                return None
-
-            return ScrapedItem(
-                title=title or "Untitled",
-                content=text_content,
-                content_type=self._classify_content(url, title or "", text_content),
-                source_url=url
-            )
-
-        except Exception as exc:
-            logger.debug(f"Readability extraction failed for {url}: {exc}")
-            return None
 
     def _is_valid_html(self, content: bytes) -> bool:
         """Check if content appears to be valid, substantial HTML"""
@@ -438,9 +434,112 @@ class AsyncMultiExtractor:
 
         return 'blog'
 
+    async def _is_error_page(self, content: bytes, url: str) -> bool:
+        """Detect if content represents an error page (404, etc.)"""
+        try:
+            content_str = content.decode('utf-8', errors='ignore').lower()
+
+            # Skip error detection for known SPA frameworks that might have minimal HTML
+            spa_indicators = [
+                '_next/', 'next/static', '__next',  # Next.js
+                'nuxt', '_nuxt/',  # Nuxt.js
+                'react', 'vue', 'angular',  # Framework names
+                'app-root', 'root-app',  # Common SPA root elements
+                'webpack', 'bundle.js'  # Build tools
+            ]
+
+            # If it looks like an SPA, be very conservative about error detection
+            is_likely_spa = any(indicator in content_str for indicator in spa_indicators)
+
+            if is_likely_spa:
+                # For SPAs, only flag as error if we have very clear error indicators in visible content
+                # Parse HTML and extract only visible text (not scripts/styles)
+                from bs4 import BeautifulSoup
+                try:
+                    soup = BeautifulSoup(content_str, 'html.parser')
+                    # Remove script and style elements
+                    for script in soup(['script', 'style', 'head']):
+                        script.decompose()
+                    visible_text = soup.get_text().lower()
+
+                    # Check for errors in visible content only
+                    definitive_errors = [
+                        'greetings flesh bag',  # TNW specific 404
+                        'error 404', '404 error',
+                        'this page could not be found',
+                        'page does not exist'
+                    ]
+
+                    # Only flag as error if the error message appears prominently in visible content
+                    for error in definitive_errors:
+                        if error in visible_text and len(visible_text.strip()) < 1000:
+                            # Error message in short visible content = likely error page
+                            return True
+
+                    return False
+                except:
+                    # If parsing fails, be conservative and don't flag as error for SPAs
+                    return False
+
+            # For regular sites, use normal error detection
+            strong_error_indicators = [
+                'greetings flesh bag',  # TNW specific 404
+                'error 404', '404 error',
+                'page not found', 'file not found',
+                'this page could not be found',
+                'page does not exist', 'content not available',
+                'page unavailable'
+            ]
+
+            # Check for strong error indicators
+            for indicator in strong_error_indicators:
+                if indicator in content_str:
+                    return True
+
+            # Only check for generic "404" or "not found" if the content is very short
+            visible_text = ' '.join(content_str.split())
+            if len(visible_text) < 300:  # Very short content only
+                weak_indicators = ['404', 'not found', 'oops', 'something went wrong']
+                for indicator in weak_indicators:
+                    if indicator in visible_text:
+                        return True
+
+            return False
+        except Exception:
+            return False
+
+    def _is_likely_error_content(self, content: str, title: str) -> bool:
+        """Check if extracted content appears to be from an error page"""
+        content_lower = content.lower()
+        title_lower = title.lower()
+
+        # Strong error indicators in title
+        strong_title_errors = [
+            'greetings flesh bag', '404 error', 'page not found',
+            'file not found', 'error 404',
+            'this page could not be found', 'content not available',
+            'page does not exist', 'page unavailable'
+        ]
+
+        # Check title for strong indicators
+        for pattern in strong_title_errors:
+            if pattern in title_lower:
+                return True
+
+        # For content, be more conservative - only flag if very obvious
+        if len(content.strip()) < 200:  # Very short content
+            if 'greetings flesh bag' in content_lower or 'error 404' in content_lower:
+                return True
+
+        # Check for typical TNW 404 page structure specifically
+        if 'greetings flesh bag' in content_lower and '404 error' in content_lower:
+            return True
+
+        return False
+
 
 # Synchronous wrapper for backward compatibility
-def extract_content_parallel_sync(urls: List[str], use_browser: bool = False, max_concurrent: int = 10) -> List[Optional[ScrapedItem]]:
+def extract_content_parallel_sync(urls: List[str], use_browser: bool = False, max_concurrent: int = 15) -> List[Optional[ScrapedItem]]:
     """Synchronous wrapper for parallel extraction"""
     async def _extract():
         async with AsyncMultiExtractor(use_browser=use_browser, max_concurrent=max_concurrent) as extractor:

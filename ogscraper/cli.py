@@ -54,13 +54,8 @@ def setup_logging(verbose: bool = False) -> None:
     help='Use browser rendering for JavaScript-heavy sites'
 )
 @click.option(
-    '--parallel/--sequential',
-    default=True,
-    help='Use parallel processing for faster extraction (default: parallel)'
-)
-@click.option(
     '--max-concurrent',
-    default=10,
+    default=15,
     help='Maximum concurrent connections for parallel processing',
     type=int
 )
@@ -71,7 +66,6 @@ def main(
     verbose: bool,
     chunk_size: int,
     browser: bool,
-    parallel: bool,
     max_concurrent: int
 ) -> None:
     """Scrape content from a website and output as JSON
@@ -88,7 +82,6 @@ def main(
             url,
             chunk_size=chunk_size,
             use_browser=browser,
-            parallel=parallel,
             max_concurrent=max_concurrent
         )
         result = scraper.scrape(max_items)

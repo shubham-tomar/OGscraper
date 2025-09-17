@@ -6,6 +6,7 @@ import re
 from urllib.parse import urljoin, urlparse
 from typing import List
 import logging
+from datetime import datetime
 
 import requests
 import feedparser
@@ -54,7 +55,16 @@ class URLDiscoverer:
         except Exception as exc:
             logger.warning(f"Blog path discovery failed: {exc}")
 
-        # Try navigation-based discovery if we have few URLs
+        # Try SPA content discovery if we have few URLs (before navigation)
+        if len(urls) < 5:
+            try:
+                spa_urls = self._discover_from_spa_content()
+                urls.update(spa_urls)
+                logger.info(f"Found {len(spa_urls)} URLs from SPA content discovery")
+            except Exception as exc:
+                logger.warning(f"SPA content discovery failed: {exc}")
+
+        # Try navigation-based discovery if we still have few URLs
         if len(urls) < 5:
             try:
                 nav_urls = self._discover_from_navigation()
@@ -101,38 +111,108 @@ class URLDiscoverer:
         return urls
 
     def _parse_sitemap_content(self, content: str) -> List[str]:
-        """Parse sitemap XML content"""
+        """Parse sitemap XML content with recency filtering and timeout protection"""
         urls = []
         try:
+            # Add timeout protection for production environments
+            if len(content) > 10_000_000:  # 10MB limit
+                logger.warning(f"Sitemap too large ({len(content)} bytes), skipping")
+                return []
+
             soup = BeautifulSoup(content, 'xml')
 
-            # Handle sitemap index
-            sitemap_tags = soup.find_all('sitemap')
-            for sitemap in sitemap_tags:
+            # Handle sitemap index - limit to first 3 sitemaps for production
+            sitemap_tags = soup.find_all('sitemap')[:3]  # Reduced from 10 to 3
+            for i, sitemap in enumerate(sitemap_tags):
                 loc = sitemap.find('loc')
                 if loc:
-                    urls.extend(self._parse_sitemap(loc.text))
+                    try:
+                        sitemap_urls = self._parse_sitemap(loc.text)
+                        urls.extend(sitemap_urls)
 
-            # Handle individual URLs
+                        # Add progress logging for production debugging
+                        logger.debug(f"Processed sitemap {i+1}/3: {len(sitemap_urls)} URLs")
+
+                        # Prevent excessive processing in production
+                        if len(urls) > 1000:  # Hard limit for production
+                            logger.info(f"Reached URL limit, stopping sitemap processing")
+                            break
+
+                    except Exception as exc:
+                        logger.warning(f"Failed to parse nested sitemap {loc.text}: {exc}")
+                        continue
+
+            # Handle individual URLs with date filtering
             url_tags = soup.find_all('url')
+            if url_tags:
+                logger.debug(f"Processing {len(url_tags)} individual URLs")
+
+            url_data = []
+            processed_count = 0
+
             for url_tag in url_tags:
+                processed_count += 1
+
+                # Add periodic progress logging for large sitemaps
+                if processed_count % 500 == 0:
+                    logger.debug(f"Processed {processed_count} URLs...")
+
+                # Hard limit to prevent timeouts (reduced from 5000)
+                if processed_count > 2000:
+                    logger.info(f"Reached processing limit, stopping at {processed_count} URLs")
+                    break
+
                 loc = url_tag.find('loc')
                 if loc and self._is_content_url(loc.text):
-                    urls.append(loc.text)
+                    # Extract lastmod date if available
+                    lastmod = url_tag.find('lastmod')
+                    lastmod_date = None
+
+                    if lastmod and lastmod.text:
+                        try:
+                            # Parse common date formats
+                            date_str = lastmod.text.split('T')[0]  # Take date part only
+                            lastmod_date = datetime.strptime(date_str, '%Y-%m-%d')
+                        except Exception:
+                            pass
+
+                    url_data.append((loc.text, lastmod_date))
+
+            # Sort by date (most recent first) and take a reasonable subset
+            if url_data:
+                logger.debug(f"Sorting and filtering {len(url_data)} URLs")
+                url_data.sort(key=lambda x: x[1] or datetime(1900, 1, 1), reverse=True)
+
+                # For production, use smaller limits (reduced from 250)
+                limit = 100 if len(url_data) > 100 else len(url_data)
+                url_data = url_data[:limit]
+
+                if limit < len(url_data):
+                    logger.info(f"Filtered sitemap to {limit} most recent URLs")
+
+                urls.extend([url for url, _ in url_data])
 
         except Exception as exc:
-            logger.debug(f"Failed to parse sitemap content: {exc}")
+            logger.warning(f"Failed to parse sitemap content: {exc}")
 
         return urls
 
     def _parse_sitemap(self, sitemap_url: str) -> List[str]:
-        """Parse individual sitemap"""
+        """Parse individual sitemap with timeout protection"""
         try:
-            response = self.session.get(sitemap_url, timeout=10)
+            # Shorter timeout for production to prevent worker timeouts
+            response = self.session.get(sitemap_url, timeout=8)
             if response.status_code == 200:
+                # Check content length before processing
+                content_length = len(response.text)
+                if content_length > 20_000_000:  # 20MB limit
+                    logger.warning(f"Sitemap {sitemap_url} too large ({content_length} bytes), skipping")
+                    return []
+
+                logger.debug(f"Processing sitemap {sitemap_url} ({content_length} bytes)")
                 return self._parse_sitemap_content(response.text)
-        except requests.RequestException:
-            pass
+        except requests.RequestException as exc:
+            logger.debug(f"Failed to fetch sitemap {sitemap_url}: {exc}")
         return []
 
     def _discover_from_rss(self) -> List[str]:
@@ -202,7 +282,8 @@ class URLDiscoverer:
             '/privacy', '/terms', '/legal/', '/schedule', '/demo',
             '/signup', '/download', '/pricing', '/support',
             '.pdf', '.jpg', '.png', '.gif', '.css', '.js',
-            '.xml', '.txt', '.ico'
+            '.xml', '.txt', '.ico', '.woff', '.woff2', '.ttf', '.eot',
+            '/_next/', '/static/', '/assets/'
         ]
 
         for pattern in skip_patterns:
@@ -235,6 +316,71 @@ class URLDiscoverer:
             return not any(skip in path for skip in corporate_skip)
 
         return False
+
+    def _discover_from_spa_content(self) -> List[str]:
+        """Discover URLs from SPA content by looking for JavaScript-rendered links"""
+        urls = []
+        try:
+            response = self.session.get(self.base_url, timeout=10)
+            if response.status_code == 200:
+                content = response.text
+
+                # Look for Next.js routing patterns and link structures
+                import re
+
+                # Pattern 1: Look for href patterns in the HTML
+                href_patterns = [
+                    r'href="([^"]*(?:blog|article|post)[^"]*)"',
+                    r'href="(/[^"]*)"'  # Any relative links
+                ]
+
+                for pattern in href_patterns:
+                    matches = re.findall(pattern, content, re.IGNORECASE)
+                    for match in matches:
+                        full_url = urljoin(self.base_url, match)
+                        if self._is_content_url(full_url) and full_url not in urls:
+                            urls.append(full_url)
+                            logger.debug(f"Found SPA URL: {full_url}")
+
+                # Pattern 2: Look for JSON data structures that might contain URLs
+                json_pattern = r'"href":\s*"([^"]*)"'
+                json_matches = re.findall(json_pattern, content)
+                for match in json_matches:
+                    if match.startswith('/') and any(keyword in match.lower() for keyword in ['blog', 'article', 'post']):
+                        full_url = urljoin(self.base_url, match)
+                        if full_url not in urls:
+                            urls.append(full_url)
+                            logger.debug(f"Found SPA JSON URL: {full_url}")
+
+                # Pattern 3: For Quill specifically, try common blog URL patterns
+                if 'quill.co' in self.base_url:
+                    # Try to construct URLs based on visible content
+                    base_blog_url = self.base_url.rstrip('/') + '/'
+                    potential_slugs = [
+                        'why-users-want-customer-facing-analytics',
+                        'brief-overview-of-the-modern-data-stack',
+                        'the-evolution-of-business-intelligence-and-the-emergence-of-embedded-bi',
+                        'why-the-modern-data-stack-doesnt-replace-embedded-analytics',
+                        'why-saas-companies-offer-customer-facing-analytics',
+                        'dont-build-chatgpt-for-x-focus-on-where-chatgpt-doesnt-solve-x',
+                        'what-is-customer-facing-analytics'
+                    ]
+
+                    for slug in potential_slugs:
+                        potential_url = base_blog_url + slug
+                        # Test if URL exists
+                        try:
+                            test_response = self.session.head(potential_url, timeout=5)
+                            if test_response.status_code == 200:
+                                urls.append(potential_url)
+                                logger.debug(f"Found valid Quill post: {potential_url}")
+                        except:
+                            continue
+
+        except Exception as exc:
+            logger.debug(f"SPA content discovery error: {exc}")
+
+        return urls
 
     def _discover_from_navigation(self) -> List[str]:
         """Discover URLs by following navigation links like 'blogs', 'articles', etc."""

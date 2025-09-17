@@ -42,10 +42,17 @@ class ContentProcessor:
             content_hash_counts[content_hash] = content_hash_counts.get(content_hash, 0) + 1
 
         # If we have many duplicates of the same content, it's likely a generic page
+        # But be more selective - only trigger if it's a significant portion
         generic_extraction_detected = False
         template_content_hash = None
+        total_items = len(items)
+
         for content_hash, count in content_hash_counts.items():
-            if count > 3:  # If more than 3 items have identical content
+            # Only consider it template content if:
+            # 1. More than 3 items AND
+            # 2. Represents at least 50% of all items (for small batches) OR at least 30% (for larger batches)
+            threshold_percentage = 0.5 if total_items <= 10 else 0.3
+            if count > 3 and count >= (total_items * threshold_percentage):
                 logger.warning(f"Detected {count} items with identical content - likely generic page extraction failure")
                 generic_extraction_detected = True
                 template_content_hash = content_hash

@@ -1,0 +1,1412 @@
+{
+  "metadata": {
+    "test_run_date": "2025-09-17T12:17:43.603805",
+    "total_websites": 40,
+    "total_tests": 80
+  },
+  "summary_statistics": {
+    "total_tests": 80,
+    "successful_tests": 60,
+    "failed_tests": 20,
+    "browser_mode_tests": 40,
+    "non_browser_mode_tests": 40,
+    "avg_time_all": 2.8395680367946623,
+    "avg_time_success": 1.6202099045117697,
+    "avg_items_found": 0.75,
+    "total_items_found": 60,
+    "by_category": {
+      "Personal & Substack Blogs": {
+        "total": 10,
+        "successful": 6,
+        "avg_time": 2.753813934326172,
+        "total_items": 6
+      },
+      "SaaS & Startup Blogs": {
+        "total": 20,
+        "successful": 18,
+        "avg_time": 2.5605679392814635,
+        "total_items": 18
+      },
+      "Company / Product Guides & Docs": {
+        "total": 20,
+        "successful": 12,
+        "avg_time": 4.932355213165283,
+        "total_items": 12
+      },
+      "News / Magazine Style": {
+        "total": 10,
+        "successful": 9,
+        "avg_time": 1.013457679748535,
+        "total_items": 9
+      },
+      "Technical Blogs & Guides": {
+        "total": 12,
+        "successful": 9,
+        "avg_time": 1.9431843360265095,
+        "total_items": 9
+      },
+      "Podcast / Transcript Sites": {
+        "total": 6,
+        "successful": 4,
+        "avg_time": 2.5586361090342202,
+        "total_items": 4
+      },
+      "Other Formats": {
+        "total": 2,
+        "successful": 2,
+        "avg_time": 0.48211753368377686,
+        "total_items": 2
+      }
+    },
+    "mode_comparison": {
+      "browser": {
+        "success_rate": 80.0,
+        "avg_time": 4.52696613073349,
+        "avg_items": 0.8
+      },
+      "non_browser": {
+        "success_rate": 70.0,
+        "avg_time": 1.152169942855835,
+        "avg_items": 0.7
+      }
+    }
+  },
+  "detailed_results": [
+    {
+      "url": "https://shreycation.substack.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.8033430576324463,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:14.495684"
+    },
+    {
+      "url": "https://shreycation.substack.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 7.424911975860596,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:15.299465",
+      "sample_items": [
+        {
+          "title": "Shreycation",
+          "url": "https://shreycation.substack.com",
+          "content_preview": "# Shreycation\n\nSubscribeSign in[Home](/)[Snacks](/t/snacks)[Leaderboard](/leaderboard)[Snacks: It's not too late for Euro Summer flights](https://shre...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://paulgraham.com/articles.html",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 1.3489980697631836,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:23.791018"
+    },
+    {
+      "url": "https://paulgraham.com/articles.html",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 5.480386018753052,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:25.140521"
+    },
+    {
+      "url": "https://nilmamano.com/blog/category/dsa",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 3.8582069873809814,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:31.661308",
+      "sample_items": [
+        {
+          "title": "# Nil's Blog",
+          "url": "https://nilmamano.com/blog/category/dsa",
+          "content_preview": "# Nil's Blog\n\nTeaching DS&A · CS research highlights · SWE things · building in public\n\n### Stay in the loop\n\nI'd love to tell you when I publish a ne...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://nilmamano.com/blog/category/dsa",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7759480476379395,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:35.519831",
+      "sample_items": [
+        {
+          "title": "# Nil's Blog",
+          "url": "https://nilmamano.com/blog/category/dsa",
+          "content_preview": "# Nil's Blog\n\nTeaching DS&A · CS research highlights · SWE things · building in public\n\n### Stay in the loop\n\nI'd love to tell you when I publish a ne...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://seths.blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.2353379726409912,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:37.346367",
+      "sample_items": [
+        {
+          "title": "Seth's Blog",
+          "url": "https://seths.blog",
+          "content_preview": "\n\nThe pre-work involves important choices:\n\n\n- Am I willing to be wrong about the fact that I’m a person who doesn’t know how to do this?\n- Am I open ...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://seths.blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.5723540782928467,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:37.581994",
+      "sample_items": [
+        {
+          "title": "Seth's Blog",
+          "url": "https://seths.blog",
+          "content_preview": "\n\nThe pre-work involves important choices:\n\n\n- Am I willing to be wrong about the fact that I’m a person who doesn’t know how to do this?\n- Am I open ...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gatesnotes.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.08919215202331543,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:39.198475"
+    },
+    {
+      "url": "https://www.gatesnotes.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 6.949460983276367,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:39.287782",
+      "sample_items": [
+        {
+          "title": "The website of Bill Gates | Gates Notes",
+          "url": "https://www.gatesnotes.com",
+          "content_preview": " commentsNot seeing your comment? Read our Content Moderation Policy.Log in or sign up to commentPlease verify your accountResend verification emailLe...",
+          "content_type": "tutorial"
+        }
+      ]
+    },
+    {
+      "url": "https://quill.co/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.5713019371032715,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:47.290620",
+      "sample_items": [
+        {
+          "title": "Fullstack API Platform for Dashboards and Reporting",
+          "url": "https://quill.co/blog",
+          "content_preview": "# Why Users Want Customer-Facing Analytics\n\n#### Due to low barriers to entry, abundant capital, and tens of thousands of ambitious founders, the SaaS...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://quill.co/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6001818180084229,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:47.862252",
+      "sample_items": [
+        {
+          "title": "Fullstack API Platform for Dashboards and Reporting",
+          "url": "https://quill.co/blog",
+          "content_preview": "# Why Users Want Customer-Facing Analytics\n\n#### Due to low barriers to entry, abundant capital, and tens of thousands of ambitious founders, the SaaS...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://lioness.io",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.2954869270324707,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:49.503228",
+      "sample_items": [
+        {
+          "title": "Lioness: Pleasure. Proof. Progress",
+          "url": "https://lioness.io",
+          "content_preview": " \n\n \n\n\n\n  \n \n\n \n \n \n\n \n   ##  YOU DESERVE BETTER\n\n  Better Os. Better intimacy. Better sexual health.Improve your orgasms with the Lioness, the award-...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://lioness.io",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6812660694122314,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:49.799028",
+      "sample_items": [
+        {
+          "title": "Lioness: Pleasure. Proof. Progress",
+          "url": "https://lioness.io",
+          "content_preview": " \n\n \n\n\n\n  \n \n\n \n \n \n\n \n   ##  YOU DESERVE BETTER\n\n  Better Os. Better intimacy. Better sexual health.Improve your orgasms with the Lioness, the award-...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://www.interviewing.io/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.2500112056732178,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:51.524450",
+      "sample_items": [
+        {
+          "title": "Blog | interviewing.io",
+          "url": "https://www.interviewing.io/blog",
+          "content_preview": "By Shivam Anand | Published: \n\nI’m Shivam Anand, currently leading machine learning engineering (MLE) efforts at Meta, focused on integrity, recommend...",
+          "content_type": "call_transcript"
+        }
+      ]
+    },
+    {
+      "url": "https://www.interviewing.io/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6638109683990479,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:52.775113",
+      "sample_items": [
+        {
+          "title": "Blog | interviewing.io",
+          "url": "https://www.interviewing.io/blog",
+          "content_preview": "By Shivam Anand | Published: \n\nI’m Shivam Anand, currently leading machine learning engineering (MLE) efforts at Meta, focused on integrity, recommend...",
+          "content_type": "call_transcript"
+        }
+      ]
+    },
+    {
+      "url": "https://linear.app/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.0428009033203125,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:54.485423",
+      "sample_items": [
+        {
+          "title": "# Now",
+          "url": "https://linear.app/blog",
+          "content_preview": "# Now\n\n[All](/now)[Community](/now/community)[News](/now/news)[Craft](/now/craft)[Practices](/now/practices)[Press](/now/press) Search… ⌘K[Kevin Hartn...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://linear.app/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.4724328517913818,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:55.528689",
+      "sample_items": [
+        {
+          "title": "# Now",
+          "url": "https://linear.app/blog",
+          "content_preview": "# Now\n\n[All](/now)[Community](/now/community)[News](/now/news)[Craft](/now/craft)[Practices](/now/practices)[Press](/now/press) Search… ⌘K[Kevin Hartn...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://notion.so/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7807369232177734,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:58.052556",
+      "sample_items": [
+        {
+          "title": "#",
+          "url": "https://notion.so/blog",
+          "content_preview": "# \n\nThoughts on the future of work, from the people and teams creating it.- Latest\n- Notion HQ\n- For Teams\n- Tech\n- Mail\n- Inspiration\n- Pioneers\n- Fi...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://notion.so/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.9325969219207764,
+      "error": null,
+      "timestamp": "2025-09-17T12:13:58.833956",
+      "sample_items": [
+        {
+          "title": "#",
+          "url": "https://notion.so/blog",
+          "content_preview": "# \n\nThoughts on the future of work, from the people and teams creating it.- Latest\n- Notion HQ\n- For Teams\n- Tech\n- Mail\n- Inspiration\n- Pioneers\n- Fi...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://zapier.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 2.864003896713257,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:00.812539",
+      "sample_items": [
+        {
+          "title": "Productivity Tips & Workflow Automation Guides | Zapier Blog",
+          "url": "https://zapier.com/blog",
+          "content_preview": "[Featured article](/blog/zapier-ai-orchestration-platform/)[Product news\n\n](/blog/all-articles/product-news)[# Meet Zapier's AI orchestration platform...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://zapier.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 2.996346950531006,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:03.677055",
+      "sample_items": [
+        {
+          "title": "Productivity Tips & Workflow Automation Guides | Zapier Blog",
+          "url": "https://zapier.com/blog",
+          "content_preview": "[Featured article](/blog/zapier-ai-orchestration-platform/)[Product news\n\n](/blog/all-articles/product-news)[# Meet Zapier's AI orchestration platform...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://airbyte.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7522361278533936,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:07.720368",
+      "sample_items": [
+        {
+          "title": "# Top Stories",
+          "url": "https://airbyte.com/blog",
+          "content_preview": "[\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompany Updates### July 2025 Launch: Control and Context for AI Readiness\n\nAirbyte’s July 2025 launch empowers global data teams ...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://airbyte.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.8287570476531982,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:08.472911",
+      "sample_items": [
+        {
+          "title": "# Top Stories",
+          "url": "https://airbyte.com/blog",
+          "content_preview": "[\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompany Updates### July 2025 Launch: Control and Context for AI Readiness\n\nAirbyte’s July 2025 launch empowers global data teams ...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://vercel.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.22457003593444824,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:10.356532",
+      "sample_items": [
+        {
+          "title": "Blog - Vercel",
+          "url": "https://vercel.com/blog",
+          "content_preview": "- Sep 9## A more flexible Pro plan for modern teams\n\nWe’re updating Vercel’s Pro plan to better align with how modern teams collaborate, how applicati...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://vercel.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6830880641937256,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:10.581462",
+      "sample_items": [
+        {
+          "title": "Blog - Vercel",
+          "url": "https://vercel.com/blog",
+          "content_preview": "- Sep 9## A more flexible Pro plan for modern teams\n\nWe’re updating Vercel’s Pro plan to better align with how modern teams collaborate, how applicati...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://openai.com/research",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.08488011360168457,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:12.310850"
+    },
+    {
+      "url": "https://openai.com/research",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 30.58751893043518,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:12.395820"
+    },
+    {
+      "url": "https://figma.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.852783203125,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:44.073303",
+      "sample_items": [
+        {
+          "title": "# Shortcut | Figma Blog",
+          "url": "https://figma.com/blog",
+          "content_preview": "# Shortcut | Figma Blog\n\n[## Free association: Production designer Jeremy Hindle on building Severance\n\nSeptember 15, 2025By Amber BravoFrom Jacque Ta...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://figma.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 2.0465478897094727,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:45.926765",
+      "sample_items": [
+        {
+          "title": "# Shortcut | Figma Blog",
+          "url": "https://figma.com/blog",
+          "content_preview": "# Shortcut | Figma Blog\n\n[## Free association: Production designer Jeremy Hindle on building Severance\n\nSeptember 15, 2025By Amber BravoFrom Jacque Ta...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://resilio.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7538511753082275,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:49.020650",
+      "sample_items": [
+        {
+          "title": "# File Not Found ;)",
+          "url": "https://resilio.com/blog",
+          "content_preview": "Breadcrumb# File Not Found ;)\n\nSorry, we couldn’t find that page. It might have moved or no longer exists.[EXPLORE ACTIVE EVERYWHERE](/active-everywhe...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://resilio.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.8830118179321289,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:49.774917",
+      "sample_items": [
+        {
+          "title": "# File Not Found ;)",
+          "url": "https://resilio.com/blog",
+          "content_preview": "Breadcrumb# File Not Found ;)\n\nSorry, we couldn’t find that page. It might have moved or no longer exists.[EXPLORE ACTIVE EVERYWHERE](/active-everywhe...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://biconnector.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 2.8050789833068848,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:51.698705",
+      "sample_items": [
+        {
+          "title": "BI Connector Blog",
+          "url": "https://biconnector.com/blog",
+          "content_preview": "\n                        \nWhy Should Power BI and Analytics Professionals Care?\n\n\n\nIf you’re part of the data analytics world—working with Power BI, T...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://biconnector.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.5466880798339844,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:54.504260",
+      "sample_items": [
+        {
+          "title": "BI Connector Blog",
+          "url": "https://biconnector.com/blog",
+          "content_preview": "\n                        \nWhy Should Power BI and Analytics Professionals Care?\n\n\n\nIf you’re part of the data analytics world—working with Power BI, T...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://thebluedot.co/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.8383939266204834,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:57.093417"
+    },
+    {
+      "url": "https://thebluedot.co/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 2.2212588787078857,
+      "error": null,
+      "timestamp": "2025-09-17T12:14:57.932860"
+    },
+    {
+      "url": "https://assorthealth.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.771132230758667,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:01.199370"
+    },
+    {
+      "url": "https://assorthealth.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 9.866528034210205,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:01.970890"
+    },
+    {
+      "url": "https://franchiseki.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.1586151123046875,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:12.902703"
+    },
+    {
+      "url": "https://franchiseki.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 30.74594211578369,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:13.061380"
+    },
+    {
+      "url": "https://stripe.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.8328192234039307,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:44.872063",
+      "sample_items": [
+        {
+          "title": "# A framework for pricing AI products",
+          "url": "https://stripe.com/blog",
+          "content_preview": "\n## Industry\n\n\n# A framework for pricing AI products\n\n\n\n[September 11, 2025](/blog/a-framework-for-pricing-ai-products)\n\n\n\n[\n\n](https://www.linkedin.c...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://stripe.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.3475959300994873,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:45.705218",
+      "sample_items": [
+        {
+          "title": "# A framework for pricing AI products",
+          "url": "https://stripe.com/blog",
+          "content_preview": "\n## Industry\n\n\n# A framework for pricing AI products\n\n\n\n[September 11, 2025](/blog/a-framework-for-pricing-ai-products)\n\n\n\n[\n\n](https://www.linkedin.c...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://developer.hashicorp.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.1950228214263916,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:48.098672"
+    },
+    {
+      "url": "https://developer.hashicorp.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 30.877511024475098,
+      "error": null,
+      "timestamp": "2025-09-17T12:15:48.294030"
+    },
+    {
+      "url": "https://about.gitlab.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.9989168643951416,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:20.212952",
+      "sample_items": [
+        {
+          "title": "Blog | GitLab",
+          "url": "https://about.gitlab.com/blog",
+          "content_preview": "#### How we supercharged GitLab CI statuses with WebSockets\n\nLearn how we reduced API calls on GitLab's CI job status updates from 45 million to 3.4 m...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://about.gitlab.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6189250946044922,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:21.212149",
+      "sample_items": [
+        {
+          "title": "Blog | GitLab",
+          "url": "https://about.gitlab.com/blog",
+          "content_preview": "#### How we supercharged GitLab CI statuses with WebSockets\n\nLearn how we reduced API calls on GitLab's CI job status updates from 45 million to 3.4 m...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/architecture/",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.3790919780731201,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:22.872567",
+      "sample_items": [
+        {
+          "title": "# AWS Architecture Blog",
+          "url": "https://aws.amazon.com/blogs/architecture/",
+          "content_preview": "\n# AWS Architecture Blog\n\n\n\n\n\n\n\n\n\n\n## Simplify multi-tenant encryption with a cost-conscious AWS KMS key strategy\n\n\n\n\nIn this post, we explore an effi...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/architecture/",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.8402531147003174,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:23.252029",
+      "sample_items": [
+        {
+          "title": "# AWS Architecture Blog",
+          "url": "https://aws.amazon.com/blogs/architecture/",
+          "content_preview": "\n# AWS Architecture Blog\n\n\n\n\n\n\n\n\n\n\n## Simplify multi-tenant encryption with a cost-conscious AWS KMS key strategy\n\n\n\n\nIn this post, we explore an effi...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://cloud.google.com/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 10.737364053726196,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:25.135478",
+      "sample_items": [
+        {
+          "title": "Google Cloud Blog | News, Features and Announcements",
+          "url": "https://cloud.google.com/blog",
+          "content_preview": "#### News in short\n\nA quick take on updates, announcements, resources, events, and learning opportunities from Google Cloud in one handy location. Upd...",
+          "content_type": "news"
+        }
+      ]
+    },
+    {
+      "url": "https://cloud.google.com/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.2291038036346436,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:35.873157",
+      "sample_items": [
+        {
+          "title": "Google Cloud Blog | News, Features and Announcements",
+          "url": "https://cloud.google.com/blog",
+          "content_preview": "#### News in short\n\nA quick take on updates, announcements, resources, events, and learning opportunities from Google Cloud in one handy location. Upd...",
+          "content_type": "news"
+        }
+      ]
+    },
+    {
+      "url": "https://techcrunch.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.28994131088256836,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:38.147808",
+      "sample_items": [
+        {
+          "title": "TechCrunch | Startup and Technology News",
+          "url": "https://techcrunch.com",
+          "content_preview": "\n\n\n\n\n\n\n\n \n\n\n[Government & Policy](https://techcrunch.com/category/government-policy/)\n\n### \nAl Gore on China’s climate rise: ‘I would not have seen th...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://techcrunch.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7570617198944092,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:38.438115",
+      "sample_items": [
+        {
+          "title": "TechCrunch | Startup and Technology News",
+          "url": "https://techcrunch.com",
+          "content_preview": "\n\n\n\n\n\n\n\n \n\n\n[Government & Policy](https://techcrunch.com/category/government-policy/)\n\n### \nAl Gore on China’s climate rise: ‘I would not have seen th...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://thenextweb.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.2431492805480957,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:40.240827",
+      "sample_items": [
+        {
+          "title": "TNW | The heart of tech",
+          "url": "https://thenextweb.com",
+          "content_preview": "\n\n\n\n\n\n\n[\n\n\n\n\n](/news/europes-ai-boom-is-leaving-femtech-behind)\n\n\n\n\n\n[\n\n\n\n\n](/news/europe-needs-build-ai-employees)\n\n\n\n\n\n[\n\n\n\n\n](https://fast.wistia.c...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://thenextweb.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6854922771453857,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:41.484520",
+      "sample_items": [
+        {
+          "title": "TNW | The heart of tech",
+          "url": "https://thenextweb.com",
+          "content_preview": "\n\n\n\n\n\n\n[\n\n\n\n\n](/news/europes-ai-boom-is-leaving-femtech-behind)\n\n\n\n\n\n[\n\n\n\n\n](/news/europe-needs-build-ai-employees)\n\n\n\n\n\n[\n\n\n\n\n](https://fast.wistia.c...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://wired.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.522597074508667,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:43.211414",
+      "sample_items": [
+        {
+          "title": "# WIRED",
+          "url": "https://wired.com",
+          "content_preview": "# WIRED\n\n## Today’s Picks\n\nPolitical Violence[## Charlie Kirk Shooting Suspect Charged as Prosecutor Seeks Death Penalty\n\n](/story/charlie-kirk-shooti...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://wired.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6798079013824463,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:43.734349",
+      "sample_items": [
+        {
+          "title": "# WIRED",
+          "url": "https://wired.com",
+          "content_preview": "# WIRED\n\n## Today’s Picks\n\nPolitical Violence[## Charlie Kirk Shooting Suspect Charged as Prosecutor Seeks Death Penalty\n\n](/story/charlie-kirk-shooti...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://nytimes.com/section/technology",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.6283903121948242,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:45.459299",
+      "sample_items": [
+        {
+          "title": "Technology - The New York Times",
+          "url": "https://nytimes.com/section/technology",
+          "content_preview": "Advertisement\n\n[SKIP ADVERTISEMENT](#after-top)## Highlights\n\n- ### Has Britain Gone Too Far With Its Digital Controls?\n\nBritish authorities have ramp...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://nytimes.com/section/technology",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7537591457366943,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:46.087757",
+      "sample_items": [
+        {
+          "title": "Technology - The New York Times",
+          "url": "https://nytimes.com/section/technology",
+          "content_preview": "Advertisement\n\n[SKIP ADVERTISEMENT](#after-top)## Highlights\n\n- ### Has Britain Gone Too Far With Its Digital Controls?\n\nBritish authorities have ramp...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://theguardian.com/international/technology",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.3656458854675293,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:47.884345"
+    },
+    {
+      "url": "https://theguardian.com/international/technology",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 4.2087318897247314,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:48.250138",
+      "sample_items": [
+        {
+          "title": "Page Not Found | The Guardian",
+          "url": "https://theguardian.com/international/technology",
+          "content_preview": "\n\n\n\n\n\n\n\n\n        Sorry – we haven’t been able to serve the page you asked for.\n    \n\n\n\n        You may have followed an outdated link, or have mistype...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://martinfowler.com/articles",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 1.3394019603729248,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:53.498839"
+    },
+    {
+      "url": "https://martinfowler.com/articles",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 5.964337110519409,
+      "error": null,
+      "timestamp": "2025-09-17T12:16:54.838718"
+    },
+    {
+      "url": "https://kubernetes.io/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.5842499732971191,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:01.842301",
+      "sample_items": [
+        {
+          "title": "Kubernetes Blog | Kubernetes",
+          "url": "https://kubernetes.io/blog",
+          "content_preview": "## Posts in 2025\n\n- ##### Kubernetes v1.34: Moving Volume Group Snapshots to v1beta2\n\nBy Xing Yang (VMware by Broadcom) |\nTuesday, September 16, 2025 ...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.3007800579071045,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:02.426873",
+      "sample_items": [
+        {
+          "title": "Kubernetes Blog | Kubernetes",
+          "url": "https://kubernetes.io/blog",
+          "content_preview": "## Posts in 2025\n\n- ##### Kubernetes v1.34: Moving Volume Group Snapshots to v1beta2\n\nBy Xing Yang (VMware by Broadcom) |\nTuesday, September 16, 2025 ...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.156904935836792,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:04.771424",
+      "sample_items": [
+        {
+          "title": "# Cloudflare Fundamentals",
+          "url": "https://developers.cloudflare.com/fundamentals/",
+          "content_preview": "         Page options  # Cloudflare Fundamentals\n\n                  Cloudflare is one of the world's largest [connectivity cloud networks ↗](https://b...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.5576188564300537,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:04.928636",
+      "sample_items": [
+        {
+          "title": "# Cloudflare Fundamentals",
+          "url": "https://developers.cloudflare.com/fundamentals/",
+          "content_preview": "         Page options  # Cloudflare Fundamentals\n\n                  Cloudflare is one of the world's largest [connectivity cloud networks ↗](https://b...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://realpython.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7308287620544434,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:06.533938",
+      "sample_items": [
+        {
+          "title": "Python Tutorials – Real Python",
+          "url": "https://realpython.com",
+          "content_preview": "\n\n\n\n\n\n[\n\n\n\n\n\n\n\n\nNEW\n\n\n](/courses/python-project-management-with-uv/)\n\n[\n## Python Project Management With uv\n\n\n](/courses/python-project-management-wi...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://realpython.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.9322090148925781,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:07.265220",
+      "sample_items": [
+        {
+          "title": "Python Tutorials – Real Python",
+          "url": "https://realpython.com",
+          "content_preview": "\n\n\n\n\n\n[\n\n\n\n\n\n\n\n\nNEW\n\n\n](/courses/python-project-management-with-uv/)\n\n[\n## Python Project Management With uv\n\n\n](/courses/python-project-management-wi...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://pytorch.org/blog",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 0.07997798919677734,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:09.238864"
+    },
+    {
+      "url": "https://pytorch.org/blog",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 10.155432224273682,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:09.318943",
+      "sample_items": [
+        {
+          "title": "Blog",
+          "url": "https://pytorch.org/blog",
+          "content_preview": "\n\n\n\n[PyTorch 2.8 Brings Native XCCL Support to Intel GPUs: Case Studies from Argonne National Laboratory](https://pytorch.org/blog/pytorch-2-8-brings-...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://towardsdatascience.com",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.48845696449279785,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:20.522314",
+      "sample_items": [
+        {
+          "title": "Towards Data Science",
+          "url": "https://towardsdatascience.com",
+          "content_preview": "\n\n\n- \n\n\n## Building a Unified Intent Recognition Engine\n\n\n\n\t\tArtificial Intelligence\t\n\nHow modular design can simplify and scale intent classification...",
+          "content_type": "tutorial"
+        }
+      ]
+    },
+    {
+      "url": "https://towardsdatascience.com",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.0280141830444336,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:21.011156",
+      "sample_items": [
+        {
+          "title": "Towards Data Science",
+          "url": "https://towardsdatascience.com",
+          "content_preview": "\n\n\n- \n\n\n## Building a Unified Intent Recognition Engine\n\n\n\n\t\tArtificial Intelligence\t\n\nHow modular design can simplify and scale intent classification...",
+          "content_type": "tutorial"
+        }
+      ]
+    },
+    {
+      "url": "https://lexfridman.com/podcast",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 2.340933084487915,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:23.105602",
+      "sample_items": [
+        {
+          "title": "Lex Fridman Podcast - Lex Fridman",
+          "url": "https://lexfridman.com/podcast",
+          "content_preview": "\n\n\n\r\n                This podcast hosts conversations that explore technology, history, philosophy, music, film, sports, physics, biology, engineering...",
+          "content_type": "podcast_transcript"
+        }
+      ]
+    },
+    {
+      "url": "https://lexfridman.com/podcast",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 2.7790980339050293,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:25.446827",
+      "sample_items": [
+        {
+          "title": "Lex Fridman Podcast - Lex Fridman",
+          "url": "https://lexfridman.com/podcast",
+          "content_preview": "\n\n\n\r\n                This podcast hosts conversations that explore technology, history, philosophy, music, film, sports, physics, biology, engineering...",
+          "content_type": "podcast_transcript"
+        }
+      ]
+    },
+    {
+      "url": "https://changelog.com/podcast",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 1.3784770965576172,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:29.266926",
+      "sample_items": [
+        {
+          "title": "The Changelog podcast",
+          "url": "https://changelog.com/podcast",
+          "content_preview": "\n\n\n\n\n\n\n\n\n[\nPlay\n](https://op3.dev/e/https://cdn.changelog.com/uploads/news/161/changelog-news-161.mp3)\n[\nWatch\n](https://youtu.be/2ORQEaJD2Ms)\n\n\n[\n\n](...",
+          "content_type": "podcast_transcript"
+        }
+      ]
+    },
+    {
+      "url": "https://changelog.com/podcast",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7185451984405518,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:30.645715",
+      "sample_items": [
+        {
+          "title": "The Changelog podcast",
+          "url": "https://changelog.com/podcast",
+          "content_preview": "\n\n\n\n\n\n\n\n\n[\nPlay\n](https://op3.dev/e/https://cdn.changelog.com/uploads/news/161/changelog-news-161.mp3)\n[\nWatch\n](https://youtu.be/2ORQEaJD2Ms)\n\n\n[\n\n](...",
+          "content_type": "podcast_transcript"
+        }
+      ]
+    },
+    {
+      "url": "https://acquired.fm/episodes",
+      "use_browser": false,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 1.2472271919250488,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:32.406156"
+    },
+    {
+      "url": "https://acquired.fm/episodes",
+      "use_browser": true,
+      "max_items": 5,
+      "success": false,
+      "items_found": 0,
+      "time_taken": 6.88753604888916,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:33.653818"
+    },
+    {
+      "url": "https://arxiv.org",
+      "use_browser": false,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.16644001007080078,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:41.586412",
+      "sample_items": [
+        {
+          "title": "arXiv.org e-Print archive",
+          "url": "https://arxiv.org",
+          "content_preview": "\n\n\n\narXiv is a free distribution service and an open-access archive for nearly 2.4 million\n      scholarly articles in the fields of physics, mathemat...",
+          "content_type": "blog"
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org",
+      "use_browser": true,
+      "max_items": 5,
+      "success": true,
+      "items_found": 1,
+      "time_taken": 0.7977950572967529,
+      "error": null,
+      "timestamp": "2025-09-17T12:17:41.753151",
+      "sample_items": [
+        {
+          "title": "arXiv.org e-Print archive",
+          "url": "https://arxiv.org",
+          "content_preview": "\n\n\n\narXiv is a free distribution service and an open-access archive for nearly 2.4 million\n      scholarly articles in the fields of physics, mathemat...",
+          "content_type": "blog"
+        }
+      ]
+    }
+  ],
+  "test_websites": {
+    "Personal & Substack Blogs": [
+      "https://shreycation.substack.com",
+      "https://paulgraham.com/articles.html",
+      "https://nilmamano.com/blog/category/dsa",
+      "https://seths.blog",
+      "https://www.gatesnotes.com"
+    ],
+    "SaaS & Startup Blogs": [
+      "https://quill.co/blog",
+      "https://lioness.io",
+      "https://www.interviewing.io/blog",
+      "https://linear.app/blog",
+      "https://notion.so/blog",
+      "https://zapier.com/blog",
+      "https://airbyte.com/blog",
+      "https://vercel.com/blog",
+      "https://openai.com/research",
+      "https://figma.com/blog"
+    ],
+    "Company / Product Guides & Docs": [
+      "https://resilio.com/blog",
+      "https://biconnector.com/blog",
+      "https://thebluedot.co/blog",
+      "https://assorthealth.com/blog",
+      "https://franchiseki.com/blog",
+      "https://stripe.com/blog",
+      "https://developer.hashicorp.com/blog",
+      "https://about.gitlab.com/blog",
+      "https://aws.amazon.com/blogs/architecture/",
+      "https://cloud.google.com/blog"
+    ],
+    "News / Magazine Style": [
+      "https://techcrunch.com",
+      "https://thenextweb.com",
+      "https://wired.com",
+      "https://nytimes.com/section/technology",
+      "https://theguardian.com/international/technology"
+    ],
+    "Technical Blogs & Guides": [
+      "https://martinfowler.com/articles",
+      "https://kubernetes.io/blog",
+      "https://developers.cloudflare.com/fundamentals/",
+      "https://realpython.com",
+      "https://pytorch.org/blog",
+      "https://towardsdatascience.com"
+    ],
+    "Podcast / Transcript Sites": [
+      "https://lexfridman.com/podcast",
+      "https://changelog.com/podcast",
+      "https://acquired.fm/episodes"
+    ],
+    "Other Formats": [
+      "https://arxiv.org"
+    ]
+  }
+}
