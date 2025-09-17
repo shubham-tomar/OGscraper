@@ -1,12 +1,14 @@
 [phases.setup]
-nixPkgs = ["python310", "pip", "nodejs"]
+nixPkgs = ['nodejs', 'python310']
 
 [phases.install]
 cmds = [
-    "python -m pip install --upgrade pip",
-    "python -m pip install -r requirements.txt",
-    "python -m playwright install --with-deps chromium"
+    'python -m pip install --upgrade pip',
+    'python -m pip install -r requirements.txt'
 ]
+
+[phases.build]
+cmds = ['./build.sh']
 
 [start]
 cmd = "gunicorn --bind 0.0.0.0:$PORT app:app"
