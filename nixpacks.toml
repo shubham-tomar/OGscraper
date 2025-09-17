@@ -1,16 +1,26 @@
 [phases.setup]
-nixPkgs = ['python311', 'python311Packages.pip', 'chromium']
+nixPkgs = [
+    'python311',
+    'python311Packages.pip',
+    'chromium',
+    'xvfb-run',
+    'which',
+    'bash',
+    'coreutils'
+]
 
 [phases.install]
 cmds = [
     'python -m venv /opt/venv',
     '. /opt/venv/bin/activate && pip install --upgrade pip',
     '. /opt/venv/bin/activate && pip install -r requirements.txt',
-    '. /opt/venv/bin/activate && playwright install --with-deps chromium'
+    'echo "Chromium path: $(which chromium)" || echo "Chromium not found in PATH"'
 ]
 
 [variables]
 PATH = '/opt/venv/bin:$PATH'
+PLAYWRIGHT_BROWSERS_PATH = '/nix/store'
+PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = '1'
 
 [start]
 cmd = "/opt/venv/bin/gunicorn --bind 0.0.0.0:$PORT app:app"

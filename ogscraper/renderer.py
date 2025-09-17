@@ -7,7 +7,7 @@ import logging
 from typing import Optional, List, Dict, Any
 from urllib.parse import urljoin, urlparse
 
-from playwright.async_api import async_playwright, Page, Browser, BrowserContext
+from playwright.async_api import async_playwright, Browser, BrowserContext
 
 
 logger = logging.getLogger(__name__)
@@ -24,8 +24,36 @@ class PlaywrightRenderer:
 
     async def __aenter__(self):
         """Async context manager entry"""
+        import os
+        import shutil
         self.playwright = await async_playwright().start()
-        self.browser = await self.playwright.chromium.launch(headless=self.headless)
+
+        # Try to find system Chromium (Railway/Nix environment)
+        chromium_paths = [
+            '/usr/bin/chromium',
+            '/usr/bin/chromium-browser',
+            '/bin/chromium',
+            shutil.which('chromium'),
+            shutil.which('chromium-browser')
+        ]
+
+        system_chromium = None
+        for path in chromium_paths:
+            if path and os.path.exists(path):
+                system_chromium = path
+                logger.info(f"Found system Chromium at: {path}")
+                break
+
+        if system_chromium and (os.environ.get('PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD') == '1' or os.path.exists('/nix/store')):
+            # Use system Chromium in Nix/Railway environment
+            self.browser = await self.playwright.chromium.launch(
+                headless=self.headless,
+                executable_path=system_chromium
+            )
+        else:
+            # Fallback to downloaded browsers
+            self.browser = await self.playwright.chromium.launch(headless=self.headless)
+
         self.context = await self.browser.new_context(
             user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         )
