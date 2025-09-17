@@ -1,16 +1,11 @@
 [phases.setup]
-nixPkgs = ['nodejs', 'python310']
+nixPkgs = ['python311', 'pip', 'chromium']
 
 [phases.install]
 cmds = [
-    'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py',
-    'python get-pip.py',
-    'python -m pip install --upgrade pip',
-    'python -m pip install -r requirements.txt'
+    'pip install -r requirements.txt',
+    'playwright install --with-deps chromium'
 ]
-
-[phases.build]
-cmds = ['./build.sh']
 
 [start]
 cmd = "gunicorn --bind 0.0.0.0:$PORT app:app"
