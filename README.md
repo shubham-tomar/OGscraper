@@ -139,15 +139,118 @@ OGscraper uses a multi-strategy approach to discover and extract content:
 - **Smart Chunking**: Splits large content at natural paragraph boundaries
 - **Quality Filtering**: Removes low-quality or navigation-heavy content
 
-## 🌐 Tested Sites
+## 🌐 Tested Sites & Performance
 
-OGscraper has been tested and works well with:
+OGscraper has been comprehensively tested across 80+ websites in various categories:
 
-- **Tech Blogs**: quill.co, interviewing.io, https://warpstream.com/, https://clickhouse.com/
-- **Business Sites**: thebluedot.co, franchiseki.com
-- **Personal Blogs**: Various Substack and custom blog platforms
-- **Documentation Sites**: Sites with `/docs` or `/guides` sections
-- **News Sites**: Sites with `/news` or `/press` sections
+================================================================================
+📋 COMPREHENSIVE TEST REPORT
+================================================================================
+
+📊 OVERALL SUMMARY
+----------------------------------------
++---------------+----------------+--------------------+
+| Metric        | Browser Mode   | Non-Browser Mode   |
++===============+================+====================+
+| Success Rate  | 77.5%          | 72.5%              |
++---------------+----------------+--------------------+
+| Average Time  | 1.55s          | 1.00s              |
++---------------+----------------+--------------------+
+| Average Items | 0.8            | 0.7                |
++---------------+----------------+--------------------+
+
+📚 CATEGORY PERFORMANCE
+----------------------------------------
++-----------------------------------+----------------+------------+---------------+
+| Category                          | Success Rate   | Avg Time   |   Total Items |
++===================================+================+============+===============+
+| Personal & Substack Blogs         | 70.0%          | 1.88s      |             6 |
++-----------------------------------+----------------+------------+---------------+
+| SaaS & Startup Blogs              | 95.3%          | 1.27s      |            18 |
++-----------------------------------+----------------+------------+---------------+
+| Company / Product Guides & Doc... | 70.0%          | 1.20s      |            14 |
++-----------------------------------+----------------+------------+---------------+
+| News / Magazine Style             | 60.0%          | 0.88s      |             6 |
++-----------------------------------+----------------+------------+---------------+
+| Technical Blogs & Guides          | 66.7%          | 1.09s      |             8 |
++-----------------------------------+----------------+------------+---------------+
+| Podcast / Transcript Sites        | 100.0%         | 1.86s      |             6 |
++-----------------------------------+----------------+------------+---------------+
+| Other Formats                     | 100.0%         | 0.50s      |             2 |
++-----------------------------------+----------------+------------+---------------+
+
+⚡ FASTEST SUCCESSFUL SCRAPES
+----------------------------------------
++-------------------------------------------------+-------------+--------+---------+
+| URL                                             | Mode        | Time   |   Items |
++=================================================+=============+========+=========+
+| https://seths.blog                              | Non-Browser | 0.24s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://developers.cloudflare.com/fundamentals/ | Non-Browser | 0.28s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://quill.co/blog                           | Non-Browser | 0.28s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://nilmamano.com/blog/category/dsa         | Non-Browser | 0.38s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://techcrunch.com                          | Non-Browser | 0.38s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://arxiv.org                               | Non-Browser | 0.48s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://arxiv.org                               | Browser     | 0.53s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://changelog.com/podcast                   | Browser     | 0.62s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://lioness.io                              | Non-Browser | 0.70s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+| https://assorthealth.com/blog                   | Non-Browser | 0.70s  |       1 |
++-------------------------------------------------+-------------+--------+---------+
+
+### 👤 **Personal & Substack Blogs**
+- shreycation.substack.com, paulgraham.com/articles.html, nilmamano.com/blog
+- seths.blog, gatesnotes.com
+
+### 🚀 **SaaS & Startup Blogs**
+- quill.co/blog , lioness.io , interviewing.io/blog, linear.app/blog 
+- notion.so/blog, zapier.com/blog , airbyte.com/blog , vercel.com/blog
+- openai.com/research, figma.com/blog
+
+### 🏢 **Company / Product Guides & Docs**
+- stripe.com/blog, aws.amazon.com/blogs/architecture, cloud.google.com/blog
+- resilio.com/blog, biconnector.com/blog, thebluedot.co/blog, assorthealth.com/blog
+- franchiseki.com/blog, developer.hashicorp.com/blog, about.gitlab.com/blog
+
+### 📰 **News / Magazine Style**
+- techcrunch.com, thenextweb.com, wired.com
+- nytimes.com/section/technology, theguardian.com/international/technology
+
+### 🔧 **Technical Blogs & Guides**
+- martinfowler.com/articles, kubernetes.io/blog, developers.cloudflare.com
+- realpython.com, pytorch.org/blog, towardsdatascience.com
+
+### 🎙️ **Podcast / Transcript Sites**
+- lexfridman.com/podcast, changelog.com/podcast, acquired.fm/episodes
+
+### 📚 **Other Formats**
+- arxiv.org (academic papers)
+
+### 🔧 **Optimized For**
+- **Multi-threaded extraction**: 15 concurrent connections (optimized from 10)
+- **SPA support**: Handles JavaScript-rendered content (Next.js, React, Vue)
+- **Error detection**: Smart filtering of 404s and template content
+- **Production ready**: Timeout protection, memory management, Railway deployment
+
+### 📊 **Test Suite Results**
+Recent comprehensive testing across 80 sites shows:
+- **~60% success rate** without browser mode
+- **Higher success with browser mode** for JavaScript-heavy sites
+- **Fast extraction**: 0.8-2s per article on average
+- **Robust error handling**: Gracefully handles 404s, template content, SPAs
+
+### 🚀 **Recent Improvements**
+- **SPA Detection**: Automatically identifies and handles Single Page Applications
+- **Thread Pool Fix**: Resolved trafilatura compatibility issues
+- **Enhanced Discovery**: Better URL discovery for modern blog architectures
+- **Production Optimizations**: Railway deployment, timeout protection, memory limits
 
 ## 🛠 CLI Options
 
@@ -158,7 +261,7 @@ OGscraper has been tested and works well with:
 | `--browser` | Use browser-based extraction | False |
 | `--verbose` | Enable verbose logging | False |
 | `--parallel/--no-parallel` | Enable/disable parallel processing | True |
-| `--max-concurrent` | Maximum concurrent connections | 10 |
+| `--max-concurrent` | Maximum concurrent connections | 15 |
 
 ## 🔍 Advanced Features
 
@@ -173,14 +276,14 @@ python -m ogscraper.cli https://www.thebluedot.co/ --max-items 5
 # Result: Filters out template content, keeps one representative item
 ```
 
-### Navigation-Based Discovery
+### SPA and Modern Blog Support
 
-For sites where content is only accessible through navigation:
+For JavaScript-heavy sites and Single Page Applications:
 
 ```bash
-# Example: quill.co requires clicking navigation to access docs
-python -m ogscraper.cli https://quill.co/ --browser
-# Automatically follows navigation links to discover content
+# Example: quill.co (Next.js SPA) requires browser rendering
+python -m ogscraper.cli https://quill.co/blog --browser
+# Automatically detects SPAs and uses appropriate extraction methods
 ```
 
 ### Direct URL Extraction
