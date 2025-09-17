@@ -141,69 +141,42 @@ OGscraper uses a multi-strategy approach to discover and extract content:
 
 ## 🌐 Tested Sites & Performance
 
-OGscraper has been comprehensively tested across 80+ websites in various categories:
+OGscraper has been comprehensively tested across **80+ websites** in various categories:
 
-================================================================================
-📋 COMPREHENSIVE TEST REPORT
-================================================================================
+## 📊 Overall Performance Summary
 
-📊 OVERALL SUMMARY
-----------------------------------------
-+---------------+----------------+--------------------+
-| Metric        | Browser Mode   | Non-Browser Mode   |
-+===============+================+====================+
-| Success Rate  | 77.5%          | 72.5%              |
-+---------------+----------------+--------------------+
-| Average Time  | 1.55s          | 1.00s              |
-+---------------+----------------+--------------------+
-| Average Items | 0.8            | 0.7                |
-+---------------+----------------+--------------------+
+| Metric | Browser Mode | Non-Browser Mode |
+|--------|--------------|------------------|
+| **Success Rate** | 77.5% | 72.5% |
+| **Average Time** | 1.55s | 1.00s |
+| **Average Items** | 0.8 | 0.7 |
 
-📚 CATEGORY PERFORMANCE
-----------------------------------------
-+-----------------------------------+----------------+------------+---------------+
-| Category                          | Success Rate   | Avg Time   |   Total Items |
-+===================================+================+============+===============+
-| Personal & Substack Blogs         | 70.0%          | 1.88s      |             6 |
-+-----------------------------------+----------------+------------+---------------+
-| SaaS & Startup Blogs              | 95.3%          | 1.27s      |            18 |
-+-----------------------------------+----------------+------------+---------------+
-| Company / Product Guides & Doc... | 70.0%          | 1.20s      |            14 |
-+-----------------------------------+----------------+------------+---------------+
-| News / Magazine Style             | 60.0%          | 0.88s      |             6 |
-+-----------------------------------+----------------+------------+---------------+
-| Technical Blogs & Guides          | 66.7%          | 1.09s      |             8 |
-+-----------------------------------+----------------+------------+---------------+
-| Podcast / Transcript Sites        | 100.0%         | 1.86s      |             6 |
-+-----------------------------------+----------------+------------+---------------+
-| Other Formats                     | 100.0%         | 0.50s      |             2 |
-+-----------------------------------+----------------+------------+---------------+
+## 📚 Performance by Category
 
-⚡ FASTEST SUCCESSFUL SCRAPES
-----------------------------------------
-+-------------------------------------------------+-------------+--------+---------+
-| URL                                             | Mode        | Time   |   Items |
-+=================================================+=============+========+=========+
-| https://seths.blog                              | Non-Browser | 0.24s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://developers.cloudflare.com/fundamentals/ | Non-Browser | 0.28s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://quill.co/blog                           | Non-Browser | 0.28s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://nilmamano.com/blog/category/dsa         | Non-Browser | 0.38s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://techcrunch.com                          | Non-Browser | 0.38s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://arxiv.org                               | Non-Browser | 0.48s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://arxiv.org                               | Browser     | 0.53s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://changelog.com/podcast                   | Browser     | 0.62s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://lioness.io                              | Non-Browser | 0.70s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
-| https://assorthealth.com/blog                   | Non-Browser | 0.70s  |       1 |
-+-------------------------------------------------+-------------+--------+---------+
+| Category | Success Rate | Avg Time | Total Items |
+|----------|--------------|----------|-------------|
+| **Personal & Substack Blogs** | 70.0% | 1.88s | 6 |
+| **SaaS & Startup Blogs** | 95.3% | 1.27s | 18 |
+| **Company / Product Guides & Docs** | 70.0% | 1.20s | 14 |
+| **News / Magazine Style** | 60.0% | 0.88s | 6 |
+| **Technical Blogs & Guides** | 66.7% | 1.09s | 8 |
+| **Podcast / Transcript Sites** | 100.0% | 1.86s | 6 |
+| **Other Formats** | 100.0% | 0.50s | 2 |
+
+## ⚡ Top 10 Fastest Successful Scrapes
+
+| Website | Mode | Time | Items |
+|---------|------|------|--------|
+| [seths.blog](https://seths.blog) | Non-Browser | 0.24s | 1 |
+| [CloudFlare Docs](https://developers.cloudflare.com/fundamentals/) | Non-Browser | 0.28s | 1 |
+| [Quill Blog](https://quill.co/blog) | Non-Browser | 0.28s | 1 |
+| [DSA Blog](https://nilmamano.com/blog/category/dsa) | Non-Browser | 0.38s | 1 |
+| [TechCrunch](https://techcrunch.com) | Non-Browser | 0.38s | 1 |
+| [arXiv](https://arxiv.org) | Non-Browser | 0.48s | 1 |
+| [arXiv](https://arxiv.org) | Browser | 0.53s | 1 |
+| [Changelog Podcast](https://changelog.com/podcast) | Browser | 0.62s | 1 |
+| [Lioness](https://lioness.io) | Non-Browser | 0.70s | 1 |
+| [Assort Health](https://assorthealth.com/blog) | Non-Browser | 0.70s | 1 |
 
 ### 👤 **Personal & Substack Blogs**
 - shreycation.substack.com, paulgraham.com/articles.html, nilmamano.com/blog
